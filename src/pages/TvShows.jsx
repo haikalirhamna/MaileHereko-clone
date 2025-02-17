@@ -74,7 +74,7 @@ export default function TvShows() {
         <p className="text-primary-200 text-xs mb-0">MaileHereko</p>
         <h1 className="text-neutral-50 text-5xl lg:text-[64px]/[80px]">Movies</h1>
       </div>
-      <div className="w-full lg:max-w-[344px] px-auto mb-5 lg:mb-20">
+      <div className="w-full max-w-[344px] px-auto mb-5 lg:mb-20">
         <BaseInput
           index={1}
           title="Search Movies or TV Shows"

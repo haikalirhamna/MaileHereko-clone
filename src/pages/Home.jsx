@@ -62,13 +62,13 @@ export default function Home() {
       <span className="text-base text-neutral-300">List of movies and TV Shows, I, <span className="text-primary-300">Pramod Poudel</span> have watched till date.</span>
       <span className="text-base text-neutral-300">Explore what I have watched and also feel free to make a suggestion.</span>
     </div>
-    <div className="w-full lg:max-w-[344px] px-auto mb-5 lg:mb-20">
+    <div className="w-full max-w-[344px] px-auto mb-5 lg:mb-20">
       <BaseInput index={1} title='Search Movies or TV Shows' onKeydown={handleSearch} value={search} setValue={setSearch} leftIcon={<img src="icons/search-normal.svg" className='w-6 h-6'/>}/>
     </div>
-    <div className="w-[368px] h-14 bg-black/20 flex items-center rounded-lg overflow-hidden p-2 mb-6">
-      <span onClick={() => handleClick("all")} className={`text-xs lg:text-base font-semibold cursor-pointer rounded-lg ${filters === 'all' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>All</span>
-      <span onClick={() => handleClick("movie")} className={`text-xs lg:text-base font-semibold cursor-pointer rounded-lg ${filters === 'movie' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>Movies</span>
-      <span onClick={() => handleClick("tv")} className={`text-xs lg:text-base font-semibold cursor-pointer rounded-lg ${filters === 'tv' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>TV Shows</span>
+    <div className="w-full max-w-[368px] h-14 bg-black/20 flex items-center rounded-lg overflow-hidden p-2 mb-6">
+      <span onClick={() => handleClick("all")} className={`text-xs lg:text-base text-nowrap truncate text-ellipsis font-semibold cursor-pointer rounded-lg ${filters === 'all' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>All</span>
+      <span onClick={() => handleClick("movie")} className={`text-xs lg:text-base text-nowrap truncate text-ellipsis font-semibold cursor-pointer rounded-lg ${filters === 'movie' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>Movies</span>
+      <span onClick={() => handleClick("tv")} className={`text-xs lg:text-base text-nowrap truncate text-ellipsis font-semibold cursor-pointer rounded-lg ${filters === 'tv' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>TV Shows</span>
     </div>
     <h2 className="text-neutral-400 font-semibold mb-6">All ({items?.length ?? 0})</h2>
     {loading ? (
