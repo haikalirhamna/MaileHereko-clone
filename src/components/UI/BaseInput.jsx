@@ -25,7 +25,7 @@ export default function BaseInput({index, title, type="text", value, setValue, l
         className='w-full h-full border-0 outline-0 text-neutral-400 text-base' />
         <label
           htmlFor={index}
-          className={`absolute w-full h-full left-0 transition-all duration-300 text-sm text-neutral-600 ${isFocused ? '-top-3' : 'top-0'}`}
+          className={`absolute w-full h-full left-0 transition-all duration-300 text-sm text-neutral-600 ${isFocused ? '-top-3' : 'top-2'}`}
         >
           {title}
         </label>
