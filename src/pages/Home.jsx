@@ -34,6 +34,7 @@ export default function Home() {
         const filteredData = data?.results?.filter(item => item.media_type === "movie" || item.media_type === "tv");        
         setItems(filteredData || []);
         setData(filteredData || []);
+        setFilters("all")
       } catch (error) {
         console.error("Error fetching data:", error.message);
       } finally {

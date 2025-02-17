@@ -13,7 +13,6 @@ export default function Card({ title, image, rating }) {
       </div>
       <p className='text-white text-base text-nowrap text-ellipsis font-semibold overflow-hidden p-2 mx-auto'>{title}</p>
     </div>
-
   )
 }
 
