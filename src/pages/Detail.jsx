@@ -64,7 +64,7 @@ export default function Detail() {
             <p className="text-neutral-300 text-wrap text-xl mb-6">{data?.overview}</p>
             <div className='w-[59px] h-8 flex items-center bg-black rounded-lg overflow-hidden px-1 mb-6'>
               <Star size={16} className='text-warning-400' />
-              <span className='text-warning-400 text-base truncate text-clip'>{data?.vote_average}</span>
+              <span className='text-warning-400 text-base truncate text-clip'>{data?.vote_average.toFixed(1) || "N/A"}</span>
             </div>
             <div className="w-full grid grid-cols-2">
               <div className="mb-6">
@@ -111,7 +111,7 @@ export default function Detail() {
             <p className="text-neutral-300 text-wrap text-xl mb-6">{data?.overview}</p>
             <div className='w-[59px] h-8 flex items-center bg-black rounded-lg overflow-hidden px-1 mb-6'>
               <Star size={16} className='text-warning-400' />
-              <span className='text-warning-400 text-base truncate text-clip'>{data?.vote_average}</span>
+              <span className='text-warning-400 text-base truncate text-clip'>{data?.vote_average.toFixed(1) || "N/A"}</span>
             </div>
             <div className="mb-6">
               <p className="text-neutral-400 text-base">Type</p>

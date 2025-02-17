@@ -1,18 +1,33 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { getSearchMulti, getTopRatedMovies } from "../utils/api-handler";
+import { getSearchMovies, getTopRatedMovies } from "../utils/api-handler";
 import BaseInput from "../components/UI/BaseInput";
 import Card from "../components/UI/Card";
 import CardPlaceholder2 from "../components/UI/CardPlaceholder2";
-import { Link } from "react-router-dom";
 import NotFound from "../components/Layouts/404";
 
 export default function Movies() {
+  const observer = useRef();
   const [page, setPage] = useState(1);
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-  const observer = useRef();
+
+  const handleSearch = async (event) => {
+    if (event.key === "Enter" && search !== "") {
+      setLoading(true);
+      setHasMore(false);
+      try {
+        const data = await getSearchMovies(search);
+        setItems(data?.results || []);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };  
 
   const fetchData = async (nextPage = 1) => {
     if (!hasMore) return;
@@ -30,32 +45,12 @@ export default function Movies() {
     }
   };
 
-  const handleSearch = async (event) => {
-    if (event.key === "Enter" && search !== "") {
-      setLoading(true);
-      try {
-        const data = await getSearchMulti(event.target.value);
-        const filteredData = data?.results?.filter(
-          (item) => item.media_type === "movie" || item.media_type === "tv"
-        );
-        setItems(filteredData || []);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
   useEffect(() => {
-    fetchData(page);
-  }, []);
-
-  useEffect(() => {
-    if (page > 1) {
+    if (hasMore) {
       fetchData(page);
     }
-  }, [page]);
+  }, [page, hasMore]);
+  
 
   const lastItemRef = useCallback((node) => {
     if (loading) return;
@@ -75,13 +70,7 @@ export default function Movies() {
         <h1 className="text-neutral-50 text-5xl lg:text-[64px]/[80px]">Movies</h1>
       </div>
       <div className="w-full max-w-[344px] px-auto mb-5 lg:mb-20">
-        <BaseInput
-          index={1}
-          title="Search Movies or TV Shows"
-          onKeyDown={handleSearch}
-          value={search}
-          setValue={setSearch}
-          leftIcon={<img src="icons/search-normal.svg" className="w-6 h-6" />}
+        <BaseInput index={1} title="Search Movies or TV Shows" onKeyDown={handleSearch} value={search} setValue={setSearch} leftIcon={<img src="icons/search-normal.svg" className="w-6 h-6" />}
         />
       </div>
       <h2 className="text-neutral-400 font-semibold mb-6">({items?.length ?? 0}) items</h2>
@@ -105,7 +94,7 @@ export default function Movies() {
                     ? `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
                     : "/images/movie-default.png"
                 }
-                rating={item.vote_average}
+                rating={item?.vote_average ? item?.vote_average.toFixed(1) : "N/A"}
               />
             </Link>
           ))}

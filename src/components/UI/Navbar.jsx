@@ -14,11 +14,9 @@ export default function Navbar({ isScrolled }) {
   return (
     <>
       <nav className={`fixed top-0 inset-x-0 z-50 ${isScrolled ? 'bg-neutral-800/40 backdrop-blur-md' : ''} flex justify-between items-center py-4 px-2.5 sm:px-4 lg:px-8 xl:px-32`}>
-        <Link to={'/'}>
-          <div className="brand w-10 h-10">
-            <img src="/icons/icon.svg" alt="Logo MaileHereko" className="w-full h-full" />
-          </div>
-        </Link>
+        <div className="brand w-10 h-10" onClick={() => handleNavigate('/')}>
+          <img src="/icons/icon.svg" alt="Logo MaileHereko" className="w-full h-full" />
+        </div>
         <ul className="hidden lg:flex items-center gap-x-4 text-neutral-200 text-base">
           <Link to={'/movie'}>
             <li className="relative py-3 px-4 hover:before:w-full">Movies</li>

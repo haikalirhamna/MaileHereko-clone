@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import { getSearchMulti, getTopRatedTV } from "../utils/api-handler";
+import { getSearchTv, getTopRatedTV } from "../utils/api-handler";
 import BaseInput from "../components/UI/BaseInput";
 import Card from "../components/UI/Card";
 import CardPlaceholder2 from "../components/UI/CardPlaceholder2";
@@ -14,13 +14,28 @@ export default function TvShows() {
   const [loading, setLoading] = useState(false);
   const observer = useRef();
 
+  const handleSearch = async (event) => {
+    if (event.key === "Enter" && search !== "") {      
+      setLoading(true);
+      setHasMore(false);
+      try {
+        const data = await getSearchTv(event.target.value);
+        setItems(data?.results || []);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   const fetchData = async (nextPage = 1) => {
     if (!hasMore) return;
     setLoading(true);
     try {
       const data = await getTopRatedTV(nextPage);
       setItems((prevItems) => [...prevItems, ...data.results]);
-      if (data.results.length === 0) {
+      if (data?.results.length === 0) {
         setHasMore(false);
       }
     } catch (error) {
@@ -30,32 +45,11 @@ export default function TvShows() {
     }
   };
 
-  const handleSearch = async (event) => {
-    if (event.key === "Enter" && search !== "") {
-      setLoading(true);
-      try {
-        const data = await getSearchMulti(event.target.value);
-        const filteredData = data?.results?.filter(
-          (item) => item.media_type === "movie" || item.media_type === "tv"
-        );
-        setItems(filteredData || []);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
   useEffect(() => {
-    fetchData(page);
-  }, []);
-
-  useEffect(() => {
-    if (page > 1) {
+    if (hasMore) {
       fetchData(page);
     }
-  }, [page]);
+  }, [page, hasMore]);
 
   const lastItemRef = useCallback((node) => {
     if (loading) return;
@@ -72,7 +66,7 @@ export default function TvShows() {
     <>
       <div className="flex flex-col items-start pt-2 lg:pt-16 mb-6">
         <p className="text-primary-200 text-xs mb-0">MaileHereko</p>
-        <h1 className="text-neutral-50 text-5xl lg:text-[64px]/[80px]">Movies</h1>
+        <h1 className="text-neutral-50 text-5xl lg:text-[64px]/[80px]">TV Shows</h1>
       </div>
       <div className="w-full max-w-[344px] px-auto mb-5 lg:mb-20">
         <BaseInput
@@ -105,7 +99,7 @@ export default function TvShows() {
                     ? `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
                     : "/images/movie-default.png"
                 }
-                rating={item.vote_average}
+                rating={item?.vote_average ? item?.vote_average.toFixed(1) : "N/A"}
               />
             </Link>
           ))}

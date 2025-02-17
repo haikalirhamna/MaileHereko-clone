@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-export default function BaseInput({index, title, type="text", value, setValue, leftIcon, rightIcon, onKeydown}) {
+export default function BaseInput({index, title, type="text", value, setValue, leftIcon, rightIcon, onKeyDown}) {
   const [isFocused, setIsFocused] = useState(false)
 
   const handleChange = (e) => {
@@ -21,11 +21,11 @@ export default function BaseInput({index, title, type="text", value, setValue, l
         id={index} 
         name={index}
         value={value}
-        onKeyDown={onKeydown}
+        onKeyDown={onKeyDown}
         className='w-full h-full border-0 outline-0 text-neutral-400 text-base' />
         <label
           htmlFor={index}
-          className={`absolute w-full h-full left-0 transition-all duration-300 text-sm text-neutral-600 ${isFocused ? '-top-3' : 'top-2'}`}
+          className={`absolute left-0 transition-all duration-300 text-sm text-neutral-600 ${isFocused ? '-top-3' : 'top-2.5'}`}
         >
           {title}
         </label>
@@ -47,5 +47,5 @@ BaseInput.propTypes  = {
   setValue: PropTypes.func,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
-  onKeydown: PropTypes.func
+  onKeyDown: PropTypes.func
 }

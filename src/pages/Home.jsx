@@ -64,7 +64,7 @@ export default function Home() {
       <span className="text-base text-neutral-300">Explore what I have watched and also feel free to make a suggestion.</span>
     </div>
     <div className="w-full max-w-[344px] px-auto mb-5 lg:mb-20">
-      <BaseInput index={1} title='Search Movies or TV Shows' onKeydown={handleSearch} value={search} setValue={setSearch} leftIcon={<img src="icons/search-normal.svg" className='w-6 h-6'/>}/>
+      <BaseInput index={1} title='Search Movies or TV Shows' onKeyDown={handleSearch} value={search} setValue={setSearch} leftIcon={<img src="icons/search-normal.svg" className='w-6 h-6'/>}/>
     </div>
     <div className="w-full max-w-[368px] h-14 bg-black/20 flex items-center rounded-lg overflow-hidden p-2 mb-6">
       <span onClick={() => handleClick("all")} className={`text-xs lg:text-base text-nowrap truncate text-ellipsis font-semibold cursor-pointer rounded-lg ${filters === 'all' ? 'text-primary-50 bg-primary-400' : 'text-neutral-300'} py-2 px-8`}>All</span>
@@ -89,7 +89,7 @@ export default function Home() {
                   ? `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
                   : '/images/movie-default.png'
               }
-              rating={item.vote_average}
+              rating={item?.vote_average ? item?.vote_average.toFixed(1) : "N/A"}
             />
           </Link>
         ))}
