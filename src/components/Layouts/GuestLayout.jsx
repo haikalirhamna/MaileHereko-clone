@@ -25,7 +25,7 @@ export default function GuestLayout() {
   return (
     <div className="w-full h-full min-w-screen min-h-screen bg-neutral-900 scrollbar-hide scroll-smooth">
       <div 
-        className="w-full h-full min-h-screen bg-[url(background.svg)] bg-no-repeat bg-top bg-cover overflow-x-hidden px-4 lg:px-8 xl:px-32">
+        className="w-full h-full min-h-screen bg-[url(/images/background.svg)] bg-no-repeat bg-top bg-cover overflow-x-hidden px-4 lg:px-8 xl:px-32">
         <Navbar isScrolled={scrolled}/>
         <main className="pt-20">
           <Outlet/>

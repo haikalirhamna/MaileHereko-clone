@@ -48,7 +48,7 @@ export default function Detail() {
   ) : (
     <div className="mt-10">
       <div className="w-full h-auto lg:h-[480px] rounded-2xl lg:rounded-[40px] overflow-hidden">
-        <img src={data?.backdrop_path ? `https://image.tmdb.org/t/p/original/${data?.backdrop_path}` : "/no-image-landscape.png"} alt="background" className="w-full object-cover" />
+        <img src={data?.backdrop_path ? `https://image.tmdb.org/t/p/original/${data?.backdrop_path}` : "/images/no-image-landscape.png"} alt="background" className="w-full object-cover" />
       </div>
       <div className="relative backdrop-blur-lg w-56 lg:w-[560px] h-20 lg:h-36 z-10 bg-neutral-800/80 rounded-2xl lg:rounded-[40px] p-4 lg:p-10 -mt-10 lg:-mt-16 mb-6 lg:mb-20 ms-8 lg:ms-16">
         <p className="text-xs text-primary-200 mb-2">MaileHereko / {mediaType === 'tv' ? 'TV Shows' : 'Movies'}</p>
@@ -56,7 +56,7 @@ export default function Detail() {
       </div>
       <div className="flex flex-col sm:flex-row justify-center items-start gap-x-20 mb-6">
         <div className="w-full h-auto max-w-[480px] max-h-[720px] bg-neutral-800 rounded-3xl overflow-hidden mb-6 sm:mb-0">
-          <img src={data?.poster_path ? `https://image.tmdb.org/t/p/original${data.poster_path}` : "/movie-default.png"} alt={data?.title || data?.name || "Movie Poster"} className="w-full object-cover" />
+          <img src={data?.poster_path ? `https://image.tmdb.org/t/p/original${data.poster_path}` : "/images/movie-default.png"} alt={data?.title || data?.name || "Movie Poster"} className="w-full object-cover" />
         </div>
         {mediaType === 'tv' ? (
           <div className="w-full h-full max-w-[480px]">

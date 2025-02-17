@@ -103,7 +103,7 @@ export default function TvShows() {
                     ? `https://image.tmdb.org/t/p/w500/${item.poster_path}`
                     : item.backdrop_path
                     ? `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
-                    : "/movie-default.png"
+                    : "/images/movie-default.png"
                 }
                 rating={item.vote_average}
               />
