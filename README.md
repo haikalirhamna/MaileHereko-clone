@@ -3,7 +3,7 @@
 ## Overview
 MaileHereko-clone is a web application built to fetch and display movie data using [TMDB API](https://www.themoviedb.org/). This project is a demonstration of working with third-party APIs and modern frontend development tools.
 
-##Demo App
+## Demo App
 https://maile-hereko-clone.vercel.app/
 
 ## Tech Stack
