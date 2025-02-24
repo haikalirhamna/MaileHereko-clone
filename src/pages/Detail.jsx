@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { getMovies, getTvShows } from "../utils/api-handler";
+import { getMovies, getTvShows } from "../utils/tmdb-api-helper";
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 

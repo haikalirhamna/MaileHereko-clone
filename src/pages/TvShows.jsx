@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import { getSearchTv, getTopRatedTV } from "../utils/api-handler";
+import { Link } from "react-router-dom";
+import { getSearchTv, getTopRatedTV } from "../utils/tmdb-api-helper";
 import BaseInput from "../components/UI/BaseInput";
 import Card from "../components/UI/Card";
 import CardPlaceholder2 from "../components/UI/CardPlaceholder2";
-import { Link } from "react-router-dom";
 import NotFound from "../components/Layouts/404";
 
 export default function TvShows() {

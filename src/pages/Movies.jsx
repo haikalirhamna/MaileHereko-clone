@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { getSearchMovies, getTopRatedMovies } from "../utils/api-handler";
+import { getSearchMovies, getTopRatedMovies } from "../utils/tmdb-api-helper";
 import BaseInput from "../components/UI/BaseInput";
 import Card from "../components/UI/Card";
 import CardPlaceholder2 from "../components/UI/CardPlaceholder2";

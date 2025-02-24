@@ -3,24 +3,26 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 
-import GuestLayout from './components/Layouts/GuestLayout'
-import Home from './pages/Home'
-import Detail from './pages/Detail'
-import Movies from './pages/Movies'
-import TvShows from './pages/TvShows'
-import Login from './pages/Login'
+import GuestLayout from '../src/components/Layouts/GuestLayout'
+import Home from '../src/pages/Home'
+import Detail from '../src/pages/Detail'
+import Movies from '../src/pages/Movies'
+import TvShows from '../src/pages/TvShows'
+import Login from '../src/pages/Login'
+import PageNotFound from '../src/pages/404'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route element={<GuestLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/movie" element={<Movies />} />
           <Route path="/tv" element={<TvShows />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/detail/:mediaType/:id" element={<Detail />} />
         </Route>
+        <Route path='/*' element={<PageNotFound />}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

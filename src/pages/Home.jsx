@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import { getPopularAll, getSearchMulti } from "../utils/api-handler"
+import { getPopularAll, getSearchMulti } from "../utils/tmdb-api-helper"
 import BaseInput from "../components/UI/BaseInput"
 import Card from "../components/UI/Card"
 import CardPlaceholder2 from "../components/UI/CardPlaceholder2";
