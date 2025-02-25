@@ -63,7 +63,7 @@ export default function TvShows() {
   }, [loading, hasMore]);
 
   return (
-    <>
+    <div className="pt-20">
       <div className="flex flex-col items-start pt-2 lg:pt-16 mb-6">
         <p className="text-primary-200 text-xs mb-0">MaileHereko</p>
         <h1 className="text-neutral-50 text-5xl lg:text-[64px]/[80px]">TV Shows</h1>
@@ -108,6 +108,6 @@ export default function TvShows() {
       ) : (
         <NotFound />
       )}
-    </>
+    </div>
   );
 }

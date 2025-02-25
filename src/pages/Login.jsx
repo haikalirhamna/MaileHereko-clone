@@ -11,7 +11,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="w-full h-full grid grid-cols-2 items-center my-6 lg:my-14">
+      <div className="w-full h-full min-h-screen grid grid-cols-2 items-center my-6 lg:my-14">
         <div className="relative hidden lg:block w-[486px] h-[584px]">
           <div className="w-96 h-[560px] bg-neutral-900 rounded-4xl"></div>
           <img src="/icons/saly-11.svg" alt="icon" className="absolute bottom-0 w-full h-full" />
